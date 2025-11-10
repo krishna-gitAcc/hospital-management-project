@@ -110,21 +110,6 @@ hospital-management-system/
    npm install
    npm start
    ```
-
-## 📚 Documentation
-
-- [2-Week Build Roadmap](./docs/2_WEEK_BUILD_ROADMAP.md) - **Complete step-by-step guide to build and deploy the project**
-- [Free Tier Guide](./docs/FREE_TIER_GUIDE.md) - **🆓 Deploy using 100% free services (perfect for small-scale)**
-- [Quick Deploy Free](./docs/QUICK_DEPLOY_FREE.md) - **⚡ 30-minute quick deployment guide**
-- [Build Guide](./docs/BUILD_GUIDE.md) - **Detailed instructions for each phase**
-- [Deployment Checklist](./docs/DEPLOYMENT_CHECKLIST.md) - **Pre and post-deployment checklist**
-- [Learning Guide](./docs/LEARNING_GUIDE.md) - Comprehensive guide to understand all concepts
-- [Communication Patterns](./docs/COMMUNICATION_PATTERNS.md) - When to use gRPC, Kafka, or REST
-- [React Optimization](./docs/REACT_OPTIMIZATION.md) - **React performance optimization techniques**
-- [Flow Documentation](./docs/FLOW_DOCUMENTATION.md) - Navigation flows for each functionality
-- [API Documentation](./docs/API_DOCUMENTATION.md) - API endpoints and GraphQL schemas
-- [Quick Start Guide](./docs/QUICK_START.md) - Setup and running instructions
-
 ## 🔐 Authentication Methods
 
 The system supports three authentication methods:
@@ -143,15 +128,6 @@ cd backend && mvn test
 # Frontend tests
 cd frontend/react-graphql-app && npm test
 ```
-
-## 📦 Deployment
-
-Comprehensive deployment guides available:
-
-- [Deployment Guide](./docs/DEPLOYMENT.md) - **Complete deployment instructions for local, Docker, and cloud**
-- [2-Week Build Roadmap](./docs/2_WEEK_BUILD_ROADMAP.md) - Step-by-step build guide
-- [Build Guide](./docs/BUILD_GUIDE.md) - Detailed build instructions
-
 ### Quick Deploy
 
 **Local:**
