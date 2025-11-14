@@ -85,10 +85,8 @@ The path to your SDKMAN!-managed Maven is:
 1.  Open the Command Palette (`Cmd + Shift + P`).
 2.  Search for and select **Preferences: Open User Settings (JSON)**.
 3.  Add the following line to your `settings.json` file, pointing to the `mvn` **executable file**:
-    ```json
     {
       // ... your other settings
       "maven.executable.path": "/Users/YourUserName/.sdkman/candidates/maven/current/bin/mvn"
     }
-    ```
 4.  Save the `settings.json` file.
