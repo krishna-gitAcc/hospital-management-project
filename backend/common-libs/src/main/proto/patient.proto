@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package com.hospital.common.proto;
+
+option java_multiple_files = true;
+option java_package = "com.hospital.common.proto";
+option java_outer_classname = "PatientProto";
+
+// Patient Service
+service PatientService {
+    rpc GetPatientById(GetPatientRequest) returns (PatientResponse);
+    rpc GetPatientByUserId(GetPatientByUserIdRequest) returns (PatientResponse);
+    rpc ValidatePatient(ValidatePatientRequest) returns (ValidatePatientResponse);
+}
+
+message GetPatientRequest {
+    string patient_id = 1;
+}
+
+message GetPatientByUserIdRequest {
+    string user_id = 1;
+}
+
+message ValidatePatientRequest {
+    string patient_id = 1;
+}
+
+message PatientResponse {
+    string id = 1;
+    string user_id = 2;
+    string name = 3;
+    int32 age = 4;
+    string gender = 5;
+    string contact = 6;
+    string address = 7;
+    string date_of_birth = 8;
+    string blood_group = 9;
+    string medical_history = 10;
+}
+
+message ValidatePatientResponse {
+    bool valid = 1;
+    string message = 2;
+    PatientResponse patient = 3;
+}
+

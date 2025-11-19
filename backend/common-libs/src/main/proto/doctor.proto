@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package com.hospital.common.proto;
+
+option java_multiple_files = true;
+option java_package = "com.hospital.common.proto";
+option java_outer_classname = "DoctorProto";
+
+//Doctor Service
+service DoctorService{
+    rpc GetDoctorById(GetDoctorRequest) returns (DoctorResponse);
+    rpc GetDoctorByUserId(GetDoctorByUserIdRequest) returns (DoctorResponse);
+    rpc GetConsultationFee(GetConsultationFeeRequest) returns (ConsultationFeeResponse);
+    rpc CheckAvailability(CheckAvailabilityRequest) returns (AvailabilityResponse);
+}
+
+message GetDoctorRequest{
+    string doctor_id = 1;
+}
+
+message GetDoctorByUserIdRequest{
+    string user_id = 1;
+}
+
+message GetConsultationFeeRequest{
+    string doctor_id = 1;
+}
+
+message CheckAvailabilityRequest{
+    string doctor_id = 1;
+    string date = 2; //ISO date string;
+    string time = 3;
+}
+
+message DoctorResponse{
+    string id = 1;
+    string user_id = 2;
+    string name = 3;
+    string specialization = 4;
+    string contact = 5;
+    string qualification = 6;
+    int32 experience = 7;
+    string available_from = 8;
+    string available_to = 9;
+    repeated string available_days = 10;
+    double consultation_fee = 11;
+}
+
+message ConsultationFeeResponse{
+    double fee = 1;
+    string currency = 2;
+}
+
+message AvailabilityResponse{
+    bool available = 1;
+    string message = 2;
+}
+
