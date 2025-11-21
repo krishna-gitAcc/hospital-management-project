@@ -1,9 +1,7 @@
-version: '3.8'
-
 services:
   #PostgresSQL Database
   postgres:
-    image: postgres:15:alpine
+    image: postgres:15-alpine
     container_name: hospital_postgres
     environment:
       POSTGRES_DB: hospital_db
@@ -16,7 +14,7 @@ services:
     networks:
       - hospital-network
     healthcheck:
-      test: ["CMD_SHELL", "pg_isready -U hospital_user"]
+      test: [ "CMD-SHELL", "pg_isready -U hospital_user" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -34,13 +32,13 @@ services:
     networks:
       - hospital-network
     healthcheck:
-      test: ["CMD", "nc", "-z", "localhost", "2181"]
+      test: [ "CMD", "nc", "-z", "localhost", "2181" ]
       interval: 10s
       timeout: 5s
       retries: 5
       # start_period: 30s
 
-  #Kafka
+      #Kafka
   kafka:
     image: confluentinc/cp-kafka:7.5.0
     container_name: hospital-kafka
@@ -60,12 +58,12 @@ services:
     networks:
       - hospital-network
     healthcheck:
-      test: ["CMD", "kafka-broker-api-versions", "--bootstrap-server", "localhost:9092"]
+      test: [ "CMD", "kafka-broker-api-versions", "--bootstrap-server", "localhost:9092" ]
       interval: 10s
       timeout: 5s
       retries: 5
       # start_period: 30s
-  #kafka UI (optional - for monitoring)
+      #kafka UI (optional - for monitoring)
   kafka-ui:
     image: provectuslabs/kafka-ui:latest
     container_name: hospital-kafka-ui
@@ -74,14 +72,15 @@ services:
     ports:
       - "8080:8080"
     environment:
-      - KAFKA_CLUSTERS_0_NAME: local
-      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
-      - KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
+      KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181
     networks:
       - hospital-network
 
 volumes:
   postgres_data:
+
 
 networks:
   hospital-network:
