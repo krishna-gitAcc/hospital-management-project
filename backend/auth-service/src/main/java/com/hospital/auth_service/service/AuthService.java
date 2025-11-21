@@ -18,6 +18,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.hospital.auth_service.exception.UserAlreadyExistsException;
+
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -29,7 +31,7 @@ public class AuthService {
     @Transactional
     public AuthResponse register(AuthRequest request, UserRole role){
         if(userRepository.existsByEmail(request.getEmail())){
-            throw new RuntimeException("Email already  exists");
+            throw new UserAlreadyExistsException("Email already exists");
         }
 
         User user = User.builder()

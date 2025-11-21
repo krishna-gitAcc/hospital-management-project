@@ -1,6 +1,7 @@
 package com.hospital.auth_service.config;
 
 import com.hospital.auth_service.security.CustomUserDetailsService;
+import com.hospital.auth_service.security.GatewayAccessFilter;
 import com.hospital.auth_service.security.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -27,6 +28,7 @@ public class SecurityConfig {
 
     private final CustomUserDetailsService userDetailsService;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final GatewayAccessFilter gatewayAccessFilter;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -61,6 +63,7 @@ public class SecurityConfig {
                         .anyRequest().authenticated()
                 )
                 .authenticationProvider(authenticationProvider())
+                .addFilterBefore(gatewayAccessFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(session->session
                         .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
